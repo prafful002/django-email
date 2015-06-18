@@ -1,0 +1,372 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="utf-8"> 
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+
+
+    <script type="text/javascript"
+              src="https://maps.googleapis.com/maps/api/js?v=3.8&key=AIzaSyC7zFb7ymHd59HbHYcAld46OcF93OkjD9s&sensor=false">
+        </script> 
+    
+
+
+<script>
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+
+
+function initialize() {
+
+  directionsDisplay = new google.maps.DirectionsRenderer();
+
+  var mapProp = {
+    center:new google.maps.LatLng(41.850033, -87.6500523),
+    zoom:7,
+  
+  };
+  calcRoute();
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  directionsDisplay.setMap(map);
+
+  
+  
+}
+
+function calcRoute() {
+  
+  console.log('calc');
+  var request = {
+      origin: "chicago, il",
+      destination:"st louis, mo",
+      travelMode: google.maps.TravelMode.DRIVING,
+    };
+
+
+    directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+
+
+  }
+
+ 
+console.log('sda');
+//calcRoute();
+google.maps.event.addDomListener(window, 'load', initialize);
+console.log('ddd');
+//calcRoute();
+</script>
+
+
+
+
+
+<div marginheight="0" marginwidth="0" bgcolor="#EFEFEF" style="background-color:#efefef;font-family:'Helvetica Neue',Helvetica,arial,sans-serif;"><center>
+<table cellspacing="0" border="0" height="100%" align="center" bgcolor="#EFEFEF" width="100%" cellpadding="0" style="background-color:#d5d1cf">
+    <tbody><tr>
+        <td align="center" valign="top" style="padding:20px 10px">
+            <table cellspacing="0" border="0" cellpadding="0" style="width:580px">
+                <tbody><tr>
+                    <td align="center" valign="top" style="font-size:11px;line-height:125%;padding:0px 0px 0px 0px;color:#666666!important;text-align:center"><a href="http://www.shippr.in" style="color:#666666!important; font-size:11px;font-weight:normal;text-decoration:underline;" target="_blank"><img alt="Shippr" border="0" src="http://www.shippr.in/static/site/img/LOGO.png" style="display:inline;width:90px;min-height:35px;padding-top:10px;padding-bottom:10px"></a></td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top">
+                        <table cellspacing="0" border="0" bgcolor="#FFFFFF" width="100%" cellpadding="0" style="background-color:#ffffff">
+                            <tbody><tr>
+                                <td valign="top" style="padding-top:30px;padding-bottom:30px">
+                                                <div class="container-fluid">
+                                                    <div class="page-header">
+                                                        <h1 align="center">Invoice/Bill</h1>      
+                                                    </div>
+                                                </div>
+
+                                                <div class="container"  style="background-color:#1B8980;">
+                                                <h3 align="right"><font color="#EF6353"></font></h3>
+                                                </div>
+
+                                            </td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="top" style="color:#444444; font-size:14px;line-height:150%;padding-right:35px;padding-left:35px;text-align:left">
+                                    <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                        <tbody><tr>
+                                            <td valign="top" colspan="2" style="border-top-width:1px;border-top-style:solid;border-top-color:#dddddd;height:25px">
+                                                &nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                            <td valign="top" colspan="2" >
+                                                <br/><br/>
+
+                                        
+                                                <div>
+                                                    <table align="center" style="width:70%"   >
+
+                                                        <tr>
+                                                            <td align="center"><h4><B>Prepared by</B></h4></td>
+                                                            <td align = "center"><h4><B>Prepared for</B></h4></td>
+                                                            <td align="center" style="background-color:#efefef; color:#2C867C;"><B>INVOICE NO: {{invoice_no}}
+                                                            </B></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center"><strong><p>{{prepared_by}}</p></strong></td>
+                                                            <td align="center"><strong><p>{{prepared_for}}</p></strong></td>
+                                                            <td align="center" style="background-color:#efefef; color:#2C867C;"><B>INVOICE Date: {{invoice_date}}</B></td>
+                                                        </tr>
+                                                    </table>
+                                            
+                                               </div>
+
+                                                
+
+
+
+
+                                                <div>
+                                        <br></br><br></br><br></br>
+                                                    <table style="width:100%">
+                                                        <tr>
+
+                                                  <div class="row">
+                                                <td class="col-xs-4" style="background-color:#2C867C;" align="center"><B>Shipment ID</B></td>
+                                                <td class="col-xs-4" style="background-color:#DE6657;" align="center"><B>Shipment Date</B></td>
+                                                <td colspan="4" style="background-color:#2C867C;" align="center"><B>Shipment Address</B></td>
+                                              </div></tr>
+
+                                              <tr>
+                                              <div class ="row">
+                                                <td class="col-xs-4" style="background-color:lavender;">{{ID}}dfsdfdsfdsfsdfsdfdsfds</td>
+                                                <td class="col-xs-4" style="background-color:lavenderblush;">{{Date}}sdfdsfsdfdsfdsfdsfsdfdsfdsfdsfdd</td>
+                                                <td class="col-xs-4" style="background-color:lavender;">
+                                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></td>
+
+
+                                              </div> </tr>
+
+                                          </table>
+                                          
+                                            
+                                      </div>
+
+                                                <br><br>
+                                                <div class="container-fluid">
+                                                    <div>
+                                                    <img align="left" src="http://maps.googleapis.com/maps/api/staticmap?size=250x200&maptype=roadmap&format=jpg-baseline&extension=.jpeg&markers=color:red%7Clabel:A%7C12.9667,77.5667&markers=color:blue%7Clabel:B%7C13.093661,77.555816&path=weight:3%7Ccolor:blue%7Cenc:cpcnA{vlxM?}@iAEAEBaFcABqDHEv@At@I^c@Fa@AiAH{Ah@uCJMRo@fAa@RqCcA{APkMzBaA^gA|@uBhDg@n@w@ZJd@J|DVxB?fESzGCpBNnNT~P^rDT|Al@nAl@v@~BzCdBhDHz@Gz@a@fAoD~E_@b@mEdDuCdDoDdFm@tAaBlH]pEk@rEmA|E}ClJeEjMeDvMm@%60ESlGi@hBc@j@eBh@u@\a@h@eA|CYhDy@jAiBvAaBnBwCdECn@Xh@z@%60Aj@fDf@pBN%60AEb@_CzCaAnB_DzIeFnRm@bDR%60CbA|DVbB?fAM~CsBxKE|@^hBTrAAhAWbAmBlBe@%60A[%60DmAfHq@lAyA~DUdCVxDnBhIhAnDf@hA\rB?jFNlBpB|LlF~XnDzRhE%60V%60@~CGvEe@vFy@fHeA~GgDvJwEdMiCbHoC~GeAg@gCg@mEUwBgBoR_C_M{A_F]{Sg@g]}@iMoAkUsCsMcAmFS_JCmLZcS|AeIN_XDyLUyUiAmI_@}BBoN|@gLdAwE%60@kG?}Im@aTcBcSsBqKcA_NgAcAZOn@Nt@d@Tr@GbBwDpAqIbA{DoDs@oADwAIwAYkAUViCl@mAVe@v@}A%60AoDVkGBiAe@IgBMOMCq@e@GuAKkBO}@Gc@CDw@DcBBm@J{AwAMvAH@]DQyB]L_CBcAw@Aw@?AdA@eA?CaCXMa@_@}@DU~CMDy@oAFnAGDaCi@U{Fm@qDIEcArDDsDEDbANDLlE\dA{A|@gAbAw@@yAeAsCWsCEsD[}BS}A?mB}@kAYm@Kz@yCp@_B~@aAjAkBr@cAp@KrAKp@_AXq@FcAF}E@mD{@AYMa@AFiBLoANmB@wBmBWuBe@%60@uCb@eFqD_@nAaJnAoJLs@uAKuD_@}Iw@wEYm@BiDdAwErAg@Fu@IgBcAqEoDeBcAaEzDgFbEwFpFa@RSCaCkBqCeBw@KaCMa@s@Yy@m@m@sBcAqGoCwFmAsCw@Sw@KgAk@_AaA_C{AKe@SaEwGyBiD_@uBaA_PGoBu@{A{@cASSGsASiCe@oDu@mD[EgCPO[qC{VeByPYwEHuHCwC[qA_@q@s@g@OIz@uC~@mD%60AgEd@}E%60AcLBm@NSz@c@f@{AlCqSnB{PmG@iCJsBSwASU\kAjCa@^]Yw@}Ay@i@{Ai@sACOGOy@BuCx@cElDsOXgA}AC@a@Ho@Lu@P{@\qBj@iE%60AoDt@_CTeAEgAc@iBk@oCHsDBy@Iw@o@kAG_@HqADINOEUMm@Gg@D{@?QJWPu@">
+                                                    </div>
+
+
+                                                    
+
+                                                    <hr align="right" style= "width:50%; display:block; border-style:inset; border-width:1px">
+                                                    <h4 align="right"><B>Shipping fee: {{shipping_fee}}</B></h4>
+                                                    <br>
+
+                                                    <h4 align="right"><B>VAT: {{vat}}</B></h4>
+                                                    
+                                                    <br>
+                                                    <h4 align="right"><B>Grand Total : {{total}}</B></h4>
+                                                    <hr align="right" style= "width:50%; display:block; border-style:inset; border-width:1px">
+
+                                                
+                                                
+
+
+                                                </div>
+
+
+
+                                                <!--<div id="googleMap" style="width:300px; height:300px; border: 1px solid black" align = "left"></div> -->
+
+                                                
+                                                <div style="font-size: 11pt; color: #262626">
+                                                
+                                                <br>
+                                                </div>
+                                                <br/>
+                                                Yours, <br/>
+                                                <span style="color: #1a8b8c">{{sender}}</span><br/>
+                                                <a href="http://www.shippr.in">
+                                                <img src="http://www.shippr.in/static/site/img/LOGO.png" alt="shippr.in" width="60px"> </a>
+                                            </td>
+                                            </tr>
+
+                                        </tbody></table><br/>
+                                    </td>
+                                </tr>
+
+                            </tbody></table>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <div valign="top" style="height:57px;width:100%; background: #888;border-bottom-left-radius:3px;border-bottom-right-radius:3px;">
+                                <div style="padding-top: 15px; margin-left:20px; width: 45%; overflow:hidden; float:left;"> Call us : <span style="color: #fff; font-size: 15pt"><strong>  (080) 3301 3358</strong></span></div>
+                                <div style="float: right; margin-right: 10px;overflow:hidden; width: 48%">
+                                    <ul style="list-style-type: none; margin-top:5px">
+                                        <li style="display:inline;padding-left:15px; color:#fefefe;"> <a href="http://blog.shippr.in/" style="color: #888"><img src="http://www.shippr.in/static/site/img/icons/blog-email.png" alt="Blog" height="50px"> </a> </li>
+                                        <li style="display:inline;color:#fefefe;"><img src="http://www.shippr.in/static/site/img/icons/hr-email.png" alt="|" height="50px"></li>
+                                        <li style="display:inline;">
+                                        <a href="https://www.facebook.com/Shippr.in" style="color: #888"><img src="http://www.shippr.in/static/site/img/icons/fb-email.png" alt="Facebook" height="50px"> </a>  </li>
+                                        <li style="display:inline;color:#fefefe;"><img src="http://www.shippr.in/static/site/img/icons/hr-email.png" alt="|" height="50px"></li>
+                                        <li style="display:inline;">
+                                        <a href="http://twitter.com/shippr_in" style="color: #888"><img src="http://www.shippr.in/static/site/img/icons/twittr-email.png" alt="Twitter" height="50px"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" valign="top">
+                            <table cellspacing="0" border="0" bgcolor="#EFEFEF" width="100%" cellpadding="0" style="background-color:#efefef">
+                                <tbody><tr>
+                                    <td valign="top" style="height:20px">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <table>
+                                            <tbody>
+                                                <tr style="font-size:11px;font-weight:bold;color:#666666;text-align: center;">
+                                                    <td style="padding-right: 10px">
+                                                    <span style="text-decoration:underline">
+                                                    <a href="http://www.shippr.in/faqs/" style="color:#666666">FAQs</a>  
+                                                    </span></td>
+                                                    <td> | </td>
+                                                    <td style="padding-left: 10px">
+                                                    <span style="text-decoration:underline">
+                                                    <a href="http://www.shippr.in/privacy/" style="color:#666666">Privacy Policy</a> 
+                                                    </span></td>
+                                                </tr>
+                                            </tbody></table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" style="height:20px">&nbsp;</td>
+                                    </tr>
+                                    <tr style="color:#666666;font-size:11px;line-height:125%;text-align:center">
+                                        <td align="center" valign="top">Copyright &copy; 2014, Shippr.in <span>Bangalore, India</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" style="height:10px">&nbsp;</td>
+                                    </tr>
+                                </tbody></table>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+        </tbody></table>
+    </center>
+</div>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
